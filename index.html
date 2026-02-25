@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Takumi Educational Consultancy | Coming Soon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+      .bg-navy {
+        background-color: #002347;
+      }
+      .text-orange-brand {
+        color: #ff8c00;
+      }
+      .bg-orange-brand {
+        background-color: #ff8c00;
+      }
+      [x-cloak] {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-navy text-white min-h-screen flex flex-col items-center justify-center p-6"
+  >
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+      <svg width="100%" height="100%">
+        <defs>
+          <pattern
+            id="grid"
+            width="40"
+            height="40"
+            patternUnits="userSpaceOnUse"
+          >
+            <path
+              d="M 40 0 L 0 0 0 40"
+              fill="none"
+              stroke="white"
+              stroke-width="1"
+            />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" />
+      </svg>
+    </div>
+
+    <main class="relative z-10 max-w-4xl text-center" x-data="contactForm()">
+      <div class="mb-10 flex justify-center">
+        <img
+          src="https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/626863772_122104818921237216_3851151368026191768_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=-i1mJ4XyUFwQ7kNvwG3E0f6&_nc_oc=AdlwM8rXglRouqetHO39pau3t_Kd5_EC2FH-S9SFzktIc4JOdN8-Ku9EiHpXv9E5xXrLsr-dniUFWG0SE9tc1khh&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=GCggKirPdae-Uu3Ov6rhMg&oh=00_AftD3HVaeJaihIiJDUiW8DwPDOuMQWxbq3jCl3R8_1fSdQ&oe=69A4911D"
+          alt="Takumi Logo"
+          class="h-32 w-auto object-contain bg-white p-4 rounded-2xl shadow-xl"
+        />
+      </div>
+
+      <div class="mb-8">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tighter italic">
+          TAKUMI<span class="text-orange-brand">.</span>
+        </h1>
+        <p class="uppercase tracking-[0.3em] text-sm text-gray-400">
+          Educational Consultancy
+        </p>
+      </div>
+
+      <h2 class="text-3xl md:text-6xl font-bold mb-6 leading-tight">
+        Crafting Your <span class="text-orange-brand">Global Future</span>.
+      </h2>
+
+      <p
+        class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed"
+      >
+        Our digital home is under construction. We are busy preparing the best
+        resources for your study abroad journey.
+      </p>
+
+      <div class="max-w-md mx-auto">
+        <div
+          x-show="submitted"
+          x-cloak
+          x-transition
+          class="p-6 bg-white/5 border border-orange-brand rounded-2xl mb-8"
+        >
+          <p class="text-orange-brand font-bold">Thank you!</p>
+          <p class="text-sm">We'll notify you as soon as we launch.</p>
+        </div>
+
+        <form
+          x-show="!submitted"
+          @submit.prevent="submitForm"
+          class="flex flex-col gap-4 mb-12"
+        >
+          <input
+            type="email"
+            x-model="formData.email"
+            required
+            placeholder="Enter your email address"
+            class="w-full px-6 py-4 rounded-full bg-white/10 border border-white/20 focus:outline-none focus:border-orange-brand transition-all text-white text-center"
+          />
+
+          <textarea
+            x-model="formData.message"
+            placeholder="Which country are you interested in?"
+            class="w-full px-6 py-4 rounded-2xl bg-white/10 border border-white/20 focus:outline-none focus:border-orange-brand transition-all text-white text-center h-24 resize-none"
+          ></textarea>
+
+          <button
+            type="submit"
+            :disabled="loading"
+            class="w-full bg-orange-brand hover:bg-orange-600 text-navy font-bold py-4 rounded-full transition-all transform hover:scale-105 shadow-lg flex justify-center items-center"
+          >
+            <span x-show="!loading">Notify Me</span>
+            <svg
+              x-show="loading"
+              class="animate-spin h-5 w-5 text-navy"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              ></circle>
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm border-t border-white/10 pt-10"
+      >
+        <div>
+          <h3
+            class="text-orange-brand font-semibold mb-2 uppercase tracking-wider"
+          >
+            Expert Guidance
+          </h3>
+          <p class="text-gray-400">Tailored career paths for every student.</p>
+        </div>
+        <div>
+          <h3
+            class="text-orange-brand font-semibold mb-2 uppercase tracking-wider"
+          >
+            Global Reach
+          </h3>
+          <p class="text-gray-400">
+            Partnering with top universities worldwide.
+          </p>
+        </div>
+        <div>
+          <h3
+            class="text-orange-brand font-semibold mb-2 uppercase tracking-wider"
+          >
+            Hassle-Free Visa
+          </h3>
+          <p class="text-gray-400">Documentation support you can trust.</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="mt-16 relative z-10 flex gap-6">
+      <a
+        href="https://wa.me/9779761396802"
+        class="text-gray-400 hover:text-orange-brand transition-colors"
+        >WhatsApp</a
+      >
+      <a
+        href="https://www.facebook.com/profile.php?id=61587116491928"
+        class="text-gray-400 hover:text-orange-brand transition-colors"
+        >Facebook</a
+      >
+      <a
+        href="https://www.tiktok.com/@takumi.edu.consultancy"
+        class="text-gray-400 hover:text-orange-brand transition-colors"
+        >TikTok</a
+      >
+    </footer>
+
+    <script>
+      function contactForm() {
+        return {
+          formData: { email: "", message: "" },
+          loading: false,
+          submitted: false,
+          submitForm() {
+            this.loading = true;
+            fetch("https://formspree.io/f/xaqdaagd", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(this.formData),
+            })
+              .then((response) => {
+                if (response.ok) this.submitted = true;
+              })
+              .finally(() => (this.loading = false));
+          },
+        };
+      }
+    </script>
+  </body>
+</html>
